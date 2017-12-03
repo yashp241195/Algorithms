@@ -31,8 +31,7 @@ class Solution:
     
     # Unique pair of prime numbers upto A
     
-    def primesum(self, A):
-        
+    def all_primes_with_sum(A):
         ans = []
         if A == 4:
             ans.append(2)
@@ -48,20 +47,29 @@ class Solution:
                         if i % j == 0:
                             count += 1
                             break
-                    # add only if it is a prime        
                     if count == 0:
                         li.append(i)
-    
+
                 pair_table = []
-    
+
                 for i in range(len(li)):
-    
+
                     org = li[i]
                     cmp = A - org
+                    ctr = 0
+
+                    for k in range(2, int(cmp**0.5)+1):
+                        if cmp % k == 0:
+                            ctr += 1
+
+                    if ctr > 0:
+                        continue
+
                     pair = [org, cmp]
-    
+
                     pair_cmp = [cmp, org]
                     if pair_cmp in pair_table:
+
                         if org > cmp:
                             ans.append(cmp)
                             ans.append(org)
@@ -70,7 +78,9 @@ class Solution:
                             ans.append(cmp)
                     else:
                         pair_table.append(pair)
-    
-                return ans
-    
 
+                return ans
+
+
+    answer = all_primes_with_sum(36)
+    print(answer)
