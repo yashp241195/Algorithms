@@ -28,3 +28,49 @@ class Solution:
     		if i < A and A % i == 0:
     			return 0
     	return 1
+    
+    # Unique pair of prime numbers upto A
+    
+    def primesum(self, A):
+        
+        ans = []
+        if A == 4:
+            ans.append(2)
+            ans.append(2)
+            return ans
+        else:
+            if A > 4:
+                li = []
+                for i in range(2, A+1):
+                    count = 0
+                    sq = int(i ** 0.5) + 1
+                    for j in range(2, sq):
+                        if i % j == 0:
+                            count += 1
+                            break
+                    # add only if it is a prime        
+                    if count == 0:
+                        li.append(i)
+    
+                pair_table = []
+    
+                for i in range(len(li)):
+    
+                    org = li[i]
+                    cmp = A - org
+                    pair = [org, cmp]
+    
+                    pair_cmp = [cmp, org]
+                    if pair_cmp in pair_table:
+                        if org > cmp:
+                            ans.append(cmp)
+                            ans.append(org)
+                        else:
+                            ans.append(org)
+                            ans.append(cmp)
+                    else:
+                        pair_table.append(pair)
+    
+                return ans
+    
+
