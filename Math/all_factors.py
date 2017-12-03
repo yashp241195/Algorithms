@@ -81,6 +81,16 @@ class Solution:
 
                 return ans
 
+    # Best Solution --
+    
+    def prime_sum(A):
+        for i in range(2, int(A/2)+1):
+            a = i
+            b = A - a
+            if self.isPrime(a) and self.isPrime(b):
+                print(a, "", b)
 
-    answer = all_primes_with_sum(36)
-    print(answer)
+
+
+
+    
