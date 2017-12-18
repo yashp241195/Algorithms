@@ -1,2 +1,2 @@
-# interview-bit-solutions
-Competitive Coding
+# Data Structures and Algorthms
+### Arrays
