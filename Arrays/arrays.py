@@ -60,7 +60,7 @@ else:
 
 # Find all sub arrays of size k within the array
 # Don't confuse sub arrays with subset
-# total possible subsets = 1+2+3+..n = n*(n-1)/2
+# total possible subsets = 1+2+3+..n = n*(n+1)/2
 # sub arrays are always contiguous
 
 arr = [1, 2, 3, 4, 5]
