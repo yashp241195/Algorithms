@@ -38,38 +38,5 @@ for i in range(abs(k)):
     for j in range(size):
         print(arr[j], end=" ")
     print("")
-
-# Detect if array is sorted in increasing order or not
-
-arr = [1, 2, 3, 4, 5]
-size = len(arr)
-
-isPerfect = True
-
-for i in range(size-1):
-    if arr[i+1] > arr[i]:
-        pass
-    else:
-        isPerfect = False
-
-if isPerfect:
-    print("Array is Ascending")
-else:
-    print("Not in Ascending")
-
-
-# Find all sub arrays of size k within the array
-# Don't confuse sub arrays with subset
-# total possible subsets = 1+2+3+..n = n*(n+1)/2
-# sub arrays are always contiguous
-
-arr = [1, 2, 3, 4, 5]
-size = len(arr)
-
-for k in range(1, size):
-    for i in range(size-k+1):
-        for j in range(i, i+k):
-            print(arr[j], end=" ")
-        print("")
-
-
+    
+    
