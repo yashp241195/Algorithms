@@ -12,7 +12,7 @@ for i in range(size):
 # Using temp array ,
 # Linear time O(n) and Linear space O(n)
 
-temp = [0]*size
+temp = [0] * size
 print("\nRotated Array")
 
 # if k is positive, shift left
@@ -21,10 +21,9 @@ print("\nRotated Array")
 k = 2
 
 for i in range(size):
-    index = abs((i+k) % size)
+    index = abs((i + k) % size)
     temp[i] = arr[index]
     print(temp[i], end=" ")
-
 
 # By Rotating one by one
 # constant space and O(n.k) time
@@ -32,16 +31,15 @@ print("\nRotated one by one")
 k = 2
 for i in range(abs(k)):
     x = arr[0]
-    for j in range(size-1):
-        arr[j] = arr[j+1]
+    for j in range(size - 1):
+        arr[j] = arr[j + 1]
     arr[size - 1] = x
     for j in range(size):
         print(arr[j], end=" ")
     print("")
 
-    
 # Juggling algorithm
-    
+
 size = len(arr)
 k = 3
 
@@ -67,33 +65,27 @@ for i in range(step):
 
     arr[j] = temp
 
-print(arr)
 
 # Rotate by reversal
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 
 def reverse(array, start, final):
-    mid = int((final-start)/2)+1
+    mid = int((final - start) / 2) + 1
     for i in range(mid):
-        array[start+i], array[final-i] = array[final-i], array[start+i]
+        array[start + i], array[final - i] = array[final - i], array[start + i]
     return array
 
 
 def rotate(array, k):
-
     last = len(arr) - 1
-    print(arr, end="\n\n")
-
-    array = reverse(array, 0, k-1)
+    array = reverse(array, 0, k - 1)
     array = reverse(array, k, last)
     array = reverse(array, 0, last)
 
     return array
 
 
+print("Array : ", arr)
 arr = rotate(arr, 3)
-print(arr)
-
-    
-    
+print("After Rotation by ", 3, " Array : ", arr)
