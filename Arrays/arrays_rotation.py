@@ -69,7 +69,31 @@ for i in range(step):
 
 print(arr)
 
-# By Reversal
+# Rotate by reversal
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+
+def reverse(array, start, final):
+    mid = int((final-start)/2)+1
+    for i in range(mid):
+        array[start+i], array[final-i] = array[final-i], array[start+i]
+    return array
+
+
+def rotate(array, k):
+
+    last = len(arr) - 1
+    print(arr, end="\n\n")
+
+    array = reverse(array, 0, k-1)
+    array = reverse(array, k, last)
+    array = reverse(array, 0, last)
+
+    return array
+
+
+arr = rotate(arr, 3)
+print(arr)
 
     
     
