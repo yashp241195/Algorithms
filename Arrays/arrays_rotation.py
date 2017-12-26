@@ -145,9 +145,31 @@ for i in range(last+1):
     print("key : ",key2," Verified Key : ",arr[index])
 
 
+def pair_sum(array, add, left, right):
+    if left < right:
+        total = arr[left] + arr[right]
+        if add == total:
+            return arr[left], arr[right]
+        elif add < total:
+            return pair_sum(array, add, left, right - 1)
+        else:
+            return pair_sum(array, add, left + 1, right)
+    return False
 
 
-
+addition = 16
+last = len(arr)-1
+pivot = find_pivot(arr,0,last)
+result1 = pair_sum(arr, addition, 0, pivot-1)
+result2 = pair_sum(arr, addition, pivot, last)
+print("\nFinding pair with sum ", addition)
+if result1 is False and result2 is False:
+    print("Pair does not exist")
+else:
+    if result1 is not False:
+        print(result1)
+    if result2 is not False:
+        print(result2)
 
 
 
