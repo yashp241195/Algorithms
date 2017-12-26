@@ -38,5 +38,38 @@ for i in range(abs(k)):
     for j in range(size):
         print(arr[j], end=" ")
     print("")
+
+    
+# Juggling algorithm
+    
+size = len(arr)
+k = 3
+
+
+def gcd_ext(a, b):
+    if a == 0:
+        return b
+    return gcd_ext(b % a, a)
+
+
+step = gcd_ext(size, k)
+
+for i in range(step):
+    temp = arr[i]
+    j = i
+    while 1:
+        d = (j + k) % size
+        if d == i:
+            # stop when you reached the initial position
+            break
+        arr[j] = arr[d]
+        j += step
+
+    arr[j] = temp
+
+print(arr)
+
+# By Reversal
+
     
     
