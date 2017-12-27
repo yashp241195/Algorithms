@@ -129,6 +129,23 @@ while mid <= hi:
 print("Array : ", arr)
 
 
+# Min - Max Sort
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+size = len(arr)
+hi = size - 1
+# Using auxiliary Array
+aux = [0]*size
+
+for i in range(int(size/2)):
+    aux[2*i] = arr[i]
+    aux[2*i + 1] = arr[hi - i]
+
+if hi % 2 == 0:
+    aux[hi] = arr[int(size/2)]
+
+print(arr)
+print(aux)
 
 
 
