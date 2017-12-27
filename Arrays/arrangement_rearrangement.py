@@ -60,3 +60,33 @@ def partition(array):
 
 print("Partition : ", partition(arr))
 
+#  Dutch National Flag Algorithm, or 3-way Partitioning
+
+
+arr = [0, 0, 1, 1, 1, 2, 1, 2, 0, 0, 0, 1]
+size = len(arr)
+
+lo = 0
+hi = size - 1
+mid = 0
+
+
+while mid <= hi:
+    hashed = arr[mid]
+    if hashed == 0:
+        arr[lo], arr[mid] = arr[mid], arr[lo]
+
+        lo += 1
+        mid += 1
+
+    elif hashed == 1:
+        mid += 1
+    else:
+        arr[hi], arr[mid] = arr[mid], arr[hi]
+        hi -= 1
+
+print("Array : ", arr)
+
+
+
+
