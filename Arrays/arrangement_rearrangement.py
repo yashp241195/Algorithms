@@ -24,7 +24,7 @@ for i in range(int(size/2)):
     arr[i], arr[(size-1) - i] = arr[(size-1) - i], arr[i]
 
 print(arr)
-
+# Zig Zag sorted array 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 print("\nArray : ", arr)
 size = len(arr)
@@ -86,6 +86,48 @@ while mid <= hi:
         hi -= 1
 
 print("Array : ", arr)
+
+#  Dutch National Flag Algorithm, or 3-way Partitioning
+#  utilized in partitioning algorithm
+
+arr = [10, 80, 30, 55, 60, 65, 20, 25, 67, 50, 70]
+size = len(arr)
+
+lo = 0
+last = hi = size - 1
+mid = 0
+p1 = arr[hi-1]
+p2 = arr[hi]
+
+
+while mid <= hi:
+
+    hashed = arr[mid]
+    # print("h prev", hashed, end=" ")
+    if hashed < p1:
+        hashed = 0
+    else:
+        if hashed < p2:
+            hashed = 1
+        else:
+            hashed = 2
+    # print("h new", hashed)
+    if hashed == 0:
+        arr[lo], arr[mid] = arr[mid], arr[lo]
+
+        lo += 1
+        mid += 1
+
+    elif hashed == 1:
+        mid += 1
+    else:
+        arr[hi], arr[mid] = arr[mid], arr[hi]
+        hi -= 1
+
+# print("lo", lo, "mid", mid, "hi", hi)
+
+print("Array : ", arr)
+
 
 
 
