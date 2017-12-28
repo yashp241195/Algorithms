@@ -164,5 +164,42 @@ for i in range(size):
 print(arr)
 print(LIS)
 
+# LIS - Longest bitonic sub sequence
+
+arr = [1, 11, 2, 10, 4, 5, 2, 1]
+size = len(arr)
+LIS = [1] * size
+LDS = [1] * size
+BTS = [1] * size
+
+for i in range(size):
+    for j in range(i):
+        if arr[j] < arr[i]:
+            LIS[i] = max(LIS[i], LIS[j]+1)
+
+print("Array : ",arr)
+print("LIS : ",LIS)
+hi = size - 1
+for i in range(int(size/2)):
+    arr[i], arr[hi-i] = arr[hi-i], arr[i]
+
+# print("Array after Reverse : ",arr)
+
+for i in range(size):
+    for j in range(i):
+        if arr[j] < arr[i]:
+            LDS[i] = max(LDS[i], LDS[j]+1)
+
+print("LDS : ", LDS)
+mx = 1
+for i in range(size):
+    mx = max(LDS[i] + LIS[i] - 1, mx)
+
+print("BTS length", mx)
+
+
+
+
+
 
 
