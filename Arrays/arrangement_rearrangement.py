@@ -147,5 +147,26 @@ if hi % 2 == 0:
 print(arr)
 print(aux)
 
+# LIS - Longest Increasing sub sequence
+# basically find the number of elements smaller than given 
+# in the sequence
+
+arr = [10, 22, 9, 33, 21, 50, 60, 80]
+size = len(arr)
+LIS = [1]*size
+
+maxim = 0
+
+for i in range(size-1):
+ 
+    if arr[i+1] < arr[i]:
+        LIS[i+1] = LIS[i] - 1
+    else:
+        LIS[i+1] = LIS[maxim]+1
+        maxim = i+1
+
+print(arr)
+print(LIS)
+
 
 
