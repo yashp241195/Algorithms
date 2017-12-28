@@ -151,19 +151,15 @@ print(aux)
 # basically find the number of elements smaller than given 
 # in the sequence
 
-arr = [10, 22, 9, 33, 21, 50, 60, 80]
+arr = [5, 6, 7, 8, 1, 2, 3, 9, 7, 10]
 size = len(arr)
-LIS = [1]*size
+LIS = [1] * size
 
-maxim = 0
+for i in range(size):
+    for j in range(i):
+        if arr[j] < arr[i]:
+            LIS[i] = max(LIS[i],LIS[j]+1)
 
-for i in range(size-1):
- 
-    if arr[i+1] < arr[i]:
-        LIS[i+1] = LIS[i] - 1
-    else:
-        LIS[i+1] = LIS[maxim]+1
-        maxim = i+1
 
 print(arr)
 print(LIS)
