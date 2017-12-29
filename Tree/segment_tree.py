@@ -1,6 +1,6 @@
-# Range Query and Segment Tree
+# Range Query (Using Segment Tree)
 
-arr = [1, 2, 3, 4, 5, 6, 7, 8]
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 size = len(arr)
 sum = 0
 arr_sum = [0]*size
@@ -79,7 +79,9 @@ final = size - 1
 t = Tree()
 t.root = Node(0, final)
 temp = final
-depth = -2
+depth = 2
+if final > 7:
+    depth = -2
 # Finding depth
 while temp >= 1:
     temp = int(temp/2)
