@@ -13,4 +13,22 @@ for k in range(1, size):
             print(arr[j], end=" ")
         print("")
 
+# Find all subsets
+# hint: for each level/depth of tree make sure i value is same
 
+SET = [1, 2, 3]
+size = len(SET)
+answer = [None]*size
+
+
+def subsets(subset, i):
+    if i == size:
+        print(subset)
+    else:
+        subset[i] = 0
+        subsets(subset, i+1)
+        subset[i] = SET[i]
+        subsets(subset, i+1)
+
+
+subsets(answer, 0)
