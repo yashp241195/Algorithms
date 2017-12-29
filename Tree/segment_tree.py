@@ -1,9 +1,5 @@
 # Segment tree
 
-
-# Segment tree
-
-
 class Node:
     def __init__(self, data, le, ri):
         self.data = data
@@ -32,23 +28,29 @@ class Tree:
 
     def print_tree(self, root):
         if root is not None:
-
-            self.print_tree(root.left)
             print("Left ", root.leftIndex, " Right ", root.rightIndex)
+            self.print_tree(root.left)
+
             self.print_tree(root.right)
 
 
 t = Tree()
-t.root = Node(15, 0, 9)
-depth = 3
+size = 9
+t.root = Node(15, 0, size)
+temp = size
+depth = -2
+visited = [1]*size
+while temp >= 1:
+    temp = int(temp/2)
+    depth += 1
 
-t.root = t.insert(t.root, 0, 9, 15)
-depth -= 1
+t.root = t.insert(t.root, 0, size, 15)
+
 
 for i in range(depth):
-    if t.root.left.leftIndex <= t.root.left.rightIndex:
+    if t.root.left.leftIndex < t.root.left.rightIndex:
         t.root.left = t.insert(t.root.left, t.root.left.leftIndex, t.root.left.rightIndex, 15)
-    if t.root.right.leftIndex <= t.root.right.rightIndex:
+    if t.root.right.leftIndex < t.root.right.rightIndex:
         t.root.right = t.insert(t.root.right, t.root.right.leftIndex, t.root.right.rightIndex, 15)
 
 t.print_tree(t.root)
