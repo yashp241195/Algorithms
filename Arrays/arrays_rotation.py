@@ -171,48 +171,29 @@ else:
     if result2 is not False:
         print(result2)
 
+# Replace each element by it's greatest right element
 
-# Maximum value of sum(i*arr[i])
-#   R_0 =0*arr[0] + 1*arr[1] + ... (n-1)*arr[n-1]
-#   R_1 =0*arr[n-1] + (1+1)*arr[1] + ... (n-1)*arr[n-2]
-#   R_2 =0*arr[n-2] + (1+1)*arr[n-1] + ... (n-1)*arr[n-3]
-#   R_3 =0*arr[n-3] + (1+1)*arr[n-2] + ... (n-1)*arr[n-4]
-#   R_3 - R_2 = array_sum - (n-1)*arr[n-4]
-#   R_j - R_j-1 = array_sum - (n)*arr[n-j]
+arr = [16, 17, 4, 3, 5, 2]
+size = len(arr)
 
-# returns max possible value of Sum(i*arr[i])
-def maxSum(arr):
-    # stores sum of arr[i]
-    arrSum = 0
-
-    # stores sum of i*arr[i]
-    currVal = 0
-
-    n = len(arr)
-
-    for i in range(0, n):
-        arrSum = arrSum + arr[i]
-        currVal = currVal + (i * arr[i])
-
-    # initialize result
-    maxVal = currVal
-
-    # try all rotations one by one and find the maximum
-    # rotation sum
-    for j in range(1, n):
-        currVal = currVal + arrSum - n * arr[n - j]
-        if currVal > maxVal:
-            maxVal = currVal
-
-    # return result
-    return maxVal
+maxim = arr[size-1]
+print(arr)
 
 
-# test maxsum(arr) function
-arr = [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print("Max sum is: ", maxSum(arr))
+for i in range(size-2, -1, -1):
+    maxim = max(maxim, arr[i])
+    arr[i] = maxim
+arr[0] = -1
 
+print(arr)
 
+# Rotate by 1 to get the actual shifted answer
+
+for i in range(size-1):
+    arr[i] = arr[i+1]
+arr[size-1] = -1
+
+print(arr)
 
 
 
