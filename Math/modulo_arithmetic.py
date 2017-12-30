@@ -1,3 +1,20 @@
+# Mix Two Numbers :
+
+x = 1
+y = 9
+z = max(1,9) + 1
+
+print("x: ", x, " y: ", y, " z: ", z)
+
+mixed = x + (y % z) * z
+
+x = mixed % z
+y = int(mixed/z)
+
+
+print("x: ", x, " y: ", y, " z: ", z)
+
+
 # Min max array (Using modulo arithmetic)
 
 arr = [1, 2, 3, 4, 5, 9]
