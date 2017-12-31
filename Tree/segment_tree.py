@@ -1,6 +1,5 @@
 # Range Query (Using Segment Tree)
 
-
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 size = len(arr)
@@ -92,6 +91,19 @@ class Tree:
             self.fix_tree(root.left)
             self.fix_tree(root.right)
 
+    def find_sum(self, root, le, ri):
+        if root is not None:
+            sum = 0
+            if root.leftIndex >= le and root.rightIndex <= ri:
+                return root.data
+            elif root.leftIndex >= le or root.rightIndex <= ri:
+                sum += self.find_sum(root.right, le, ri)
+                sum += self.find_sum(root.left, le, ri)
+                return int(sum)
+
+        else:
+            return 0
+
 
 final = size - 1
 t = Tree()
@@ -116,4 +128,8 @@ for i in range(depth):
 
 t.fix_tree(t.root)
 t.print_tree(t.root)
-
+print("\nSum Array using Segment Tree : ",end=" ")
+for i in range(size):
+    data = t.find_sum(t.root, 0, i)
+    print(data, end=" ")
+print("\n")
