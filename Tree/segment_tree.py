@@ -1,6 +1,8 @@
 # Range Query (Using Segment Tree)
 
+
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 size = len(arr)
 sum = 0
 arr_sum = [0]*size
@@ -58,21 +60,33 @@ class Tree:
         self.root = None
 
     def insert(self, root, le, ri):
-        mid = int((le + ri) / 2)
-
         if root is None:
             root = Node(le, ri)
         else:
             if le <= ri:
+                mid = int((le + ri) / 2)
                 root.left = self.insert(root.left, le, mid)
                 root.right = self.insert(root.right, mid + 1, ri)
         return root
 
     def print_tree(self, root):
         if root is not None:
-            print("Left ", root.leftIndex, " Right ", root.rightIndex, " sum = ", root.data)
+            if root.leftIndex == root.rightIndex:
+                print("Left ", root.leftIndex, " Right ", root.rightIndex, " sum = ", root.data)
             self.print_tree(root.left)
             self.print_tree(root.right)
+
+    # Go to each leaf Node and fix the tree
+    def fix_tree(self, root):
+        if root is not None:
+
+            if root.left is None and root.right is None:
+                if root.leftIndex != root.rightIndex:
+                    root.left = self.insert(root.left, root.leftIndex, root.leftIndex)
+                    root.right = self.insert(root.right, root.rightIndex, root.rightIndex)
+
+            self.fix_tree(root.left)
+            self.fix_tree(root.right)
 
 
 final = size - 1
@@ -91,9 +105,10 @@ t.root = t.insert(t.root, 0, final)
 
 
 for i in range(depth):
-    if t.root.left.leftIndex < t.root.left.rightIndex:
+    if t.root.left.leftIndex <= t.root.left.rightIndex:
         t.root.left = t.insert(t.root.left, t.root.left.leftIndex, t.root.left.rightIndex)
-    if t.root.right.leftIndex < t.root.right.rightIndex:
+    if t.root.right.leftIndex <= t.root.right.rightIndex:
         t.root.right = t.insert(t.root.right, t.root.right.leftIndex, t.root.right.rightIndex)
 
+t.fix_tree(t.root)
 t.print_tree(t.root)
