@@ -1,5 +1,4 @@
 # Range Query (Using Segment Tree)
-
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 size = len(arr)
@@ -31,6 +30,7 @@ updated_value = 9
 print("Value at index ", index," is ", arr[index], ", Updated Value : ", updated_value)
 delta = updated_value - arr[index]
 print("Difference : ", delta)
+arr[index] = updated_value
 
 for i in range(index, size):
     arr_sum[i] += delta
@@ -104,6 +104,15 @@ class Tree:
         else:
             return 0
 
+    def update_tree(self, root, updated_index, diff):
+        if root is not None:
+
+            if updated_index >= root.leftIndex:
+                if updated_index <= root.rightIndex:
+                    root.data += diff
+                    self.update_tree(root.left, updated_index, diff)
+                    self.update_tree(root.right, updated_index, diff)
+
 
 final = size - 1
 t = Tree()
@@ -128,8 +137,17 @@ for i in range(depth):
 
 t.fix_tree(t.root)
 t.print_tree(t.root)
-print("\nSum Array using Segment Tree : ",end=" ")
+
+# Update value in the segment tree
+index = 5
+new_val = 6
+old_val = arr[index]
+diff = new_val - old_val
+print("\nUpdating value of index ", index, " from ", old_val," to ", new_val)
+
+t.update_tree(t.root, index, diff)
+print("\nSum Array using Segment Tree : [ ", end="")
 for i in range(size):
     data = t.find_sum(t.root, 0, i)
     print(data, end=" ")
-print("\n")
+print("]\n")
