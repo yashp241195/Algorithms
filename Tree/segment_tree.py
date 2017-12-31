@@ -71,8 +71,12 @@ class Tree:
 
     def print_tree(self, root):
         if root is not None:
-            if root.leftIndex == root.rightIndex:
-                print("Left ", root.leftIndex, " Right ", root.rightIndex, " sum = ", root.data)
+
+            # use the comment code when you want to confirm tree fix
+            # if root.leftIndex == root.rightIndex:
+            #     print("Left ", root.leftIndex, " Right ", root.rightIndex, " sum = ", root.data)
+
+            print("Left ", root.leftIndex, " Right ", root.rightIndex, " sum = ", root.data)
             self.print_tree(root.left)
             self.print_tree(root.right)
 
@@ -112,3 +116,4 @@ for i in range(depth):
 
 t.fix_tree(t.root)
 t.print_tree(t.root)
+
