@@ -1,3 +1,5 @@
+
+# Spiral Matrix 2D
 size = 6
 
 arr = []
@@ -55,6 +57,10 @@ for k in range(size):
     print("")
 
 
-print("Array")
+print("\n\nSpiral 2D Array")
 for i in range(size):
-    print(arr[i])
+    for j in range(size):
+        if arr[i][j] < 10:
+            print("", end=" ")
+        print(arr[i][j], end="  ")
+    print("")
