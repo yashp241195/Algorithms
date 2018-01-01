@@ -8,7 +8,7 @@ q = 1
 for i in range(size):
     new = [0]*size
     for j in range(size):
-        new[j] = q
+        new[j] = 0
     arr.append(new)
 
 
