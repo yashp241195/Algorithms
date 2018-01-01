@@ -1,8 +1,21 @@
-# Matrix Search
+# Sorted Matrix Search
 
-for q in range(7,37):
+size = 6
+
+arr = []
+
+q = 1
+for i in range(size):
+    new = [0]*size
+    for j in range(size):
+        new[j] = q
+        q += 1
+    arr.append(new)
+    
+    
+for q in range(1, 37):
     key = q
-    print("\nkey", key)
+    print("\nkey : ", key)
     i = 0
     j = size - 1
 
@@ -10,22 +23,28 @@ for q in range(7,37):
         i = size - 1
         j = 0
 
-    print("\ni=", i, "j=", j,"val=", arr[i][j])
+        print("\ni=", i, "j=", j,"val=", arr[i][j])
 
-    k = 0
+        while 1:
 
-    while k < 100:
-        # print(arr[i][j])
+            if key < arr[i][j]:
+                i -= 1
+            else:
+                j += 1
+            if arr[i][j] == key or i < 0 or j >= size-1:
+                break
+    else:
+        i = 0
+        j = 0
+        print("\ni=", i, "j=", j, "val=", arr[i][j])
 
-        if key < arr[i][j]:
-            i -= 1
-        else:
+        while j < size:
+            if arr[i][j] == key:
+                break
             j += 1
-        if arr[i][j] == key or i < 0 or j >= size - 1:
-            break
 
-        k += 1
     if arr[i][j] == key:
-        print("Key : ", arr[i][j]," found at i = ", i,", j = ",j)
+        print("Key : ", arr[i][j], " found at i = ", i, ", j = ", j)
     else:
         print("Key not found")
+
