@@ -52,7 +52,36 @@ def permute(answer, i):
 
 permute(arr, 0)
 
-# repeat count
+# Using counter array, printing all distinct permutations
+# if duplicates exists
+# counter array (ctr) represents number of values present
+
+
+arr = ["A", "B", "C"]
+ctr = [2, 1, 1]
+
+size = len(arr)
+
+
+def permute(answer, i):
+
+    if sum(ctr) == 0:
+        print(answer)
+    else:
+        for j in range(size):
+            if ctr[j] == 0:
+                continue
+            else:
+                answer[i] = arr[j]
+                ctr[j] -= 1
+                permute(answer, i+1)
+                ctr[j] += 1
+
+
+ans = [None]*sum(ctr)
+permute(ans, 0)
+
+# repeat count in an array in O(N)
 
 arr = [1, 1, 2, 1, 1, 2, 1, 1, 3, 1, 4, 1]
 
