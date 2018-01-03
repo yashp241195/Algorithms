@@ -1,6 +1,5 @@
 # print binary combinations
 
-
 def binary(answer, i):
     if i == len(answer):
         print(answer)
@@ -52,3 +51,23 @@ def permute(answer, i):
 
 
 permute(arr, 0)
+
+# repeat count
+
+arr = [1, 1, 2, 1, 1, 2, 1, 1, 3, 1, 4, 1]
+
+size = len(arr)
+
+for i in range(size):
+    v = abs(arr[i])
+
+    if arr[v] < 0:
+        arr[v] -= 1
+        continue
+    arr[v] = -1
+
+print(arr)
+
+for i in range(size):
+    if arr[i] < 0:
+        print(i, " is repeated ", abs(arr[i]), "times")
