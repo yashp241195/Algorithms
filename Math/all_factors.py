@@ -3,33 +3,31 @@
 
 num = 91
 j = 2
-print(num,end=" = ")
+print(num, end=" = ")
 while num != 1:
     if num % j == 0:
         num /= j
-        print(j,end="*")
+        print(j, end="*")
     else:
         j += 1
         pass
 print(1)
-    
 
 # finding all factors of a given numbers
 
 num = 36
 arr = []
 
-for i in range(1, num+1):
+for i in range(1, num + 1):
     if num % i == 0:
         arr.append(i)
 print(arr)
 
-arr2 =[]
+arr2 = []
 for i in range(len(arr)):
-    arr2.append(int(num/arr[i]))
+    arr2.append(int(num / arr[i]))
 
 print(arr2)
-
 
 # finding all factors of 36
 # 36 = [1,2,3,4,6,9,12,18,36]
@@ -40,13 +38,24 @@ print(arr2)
 # we can find all factors
 
 maxItr = int(num ** 0.5) + 1
-arr3 = []
-
 num = 36
+arr3 =[]
+arr3.append(int(1))
+arr3.append(int(num / 1))
 
-for i in range(1, maxItr):
+# check for prime or not also
+
+isPrime = True
+
+for i in range(2, maxItr):
     if num % i == 0:
+        isPrime = False
         arr3.append(int(i))
-        arr3.append(int(num/i))
+        arr3.append(int(num / i))
 
 print(arr3)
+
+if isPrime:
+    print(num, "is Prime")
+else:
+    print(num, "is Composite")
