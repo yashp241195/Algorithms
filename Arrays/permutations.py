@@ -1,3 +1,19 @@
+# print binary combinations
+
+
+def binary(answer, i):
+    if i == len(answer):
+        print(answer)
+    else:
+        answer[i] = 0
+        binary(answer, i + 1)
+        answer[i] = 1
+        binary(answer, i + 1)
+
+
+ans = [0] * 3
+binary(ans, 0)
+
 # Permutation with repetition
 
 arr = [1, 2, 3]
