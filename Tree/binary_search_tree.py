@@ -1,6 +1,5 @@
 # Simple BST
 
-
 class Node:
     def __init__(self,data):
         self.data = data
@@ -52,6 +51,30 @@ class Tree:
             level = max(level, self.get_height(root.left, level + 1), self.get_height(root.right, level + 1))
             return level
 
+    def rotate_left(self, root):
+        if root.right is not None:
+            old_root = root  # y -> current root
+            new_root = root.left  # x -> root after rotate
+
+            old_root.left = new_root.right  # y.left (earlier -> x) = x.right (should be assigned as beta)
+            new_root.right = old_root  # x.right = y
+
+            root = new_root  # x is the new current root
+
+        return root
+
+    def rotate_right(self, root):
+        if root.left is not None:
+            old_root = root  # x -> current root
+            new_root = root.right  # y -> root after rotate
+
+            old_root.right = new_root.left  # x.right (earlier -> y) = y.left (should be assigned as beta)
+            new_root.left = old_root  # y.left = x
+
+            root = new_root  # x is the new current root
+
+        return root
+
 
 t = Tree()
 t.root = Node(5)
@@ -69,6 +92,12 @@ t.print_tree(t.root, 1)
 print("\nPost Order : ")
 t.print_tree(t.root, 2)
 print("\n\nPre Order with level : \n")
-arr = []
 t.print_level(t.root, 0)
 print("\nMaximum Height : ", t.get_height(t.root, 0))
+
+print("\nAfter Left Rotation : ")
+t.root = t.rotate_left(t.root)
+t.print_level(t.root, 0)
+print("\nAfter Right Rotation : ")
+t.root = t.rotate_right(t.root)
+t.print_level(t.root, 0)
