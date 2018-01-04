@@ -26,16 +26,18 @@ class Tree:
         if root is not None:
             if traverse_order == 0:
                 print(root.data, end=" ")
-                self.print_tree(root.left)
-                self.print_tree(root.right)
+                self.print_tree(root.left, traverse_order)
+                self.print_tree(root.right, traverse_order)
             elif traverse_order == 1:
-                self.print_tree(root.left)
+                self.print_tree(root.left, traverse_order)
                 print(root.data, end=" ")
-                self.print_tree(root.right)
+                self.print_tree(root.right, traverse_order)
             elif traverse_order == 2:
-                self.print_tree(root.left)
-                self.print_tree(root.right)
+                self.print_tree(root.left, traverse_order)
+                self.print_tree(root.right, traverse_order)
                 print(root.data, end=" ")
+            else:
+                pass
 
     def print_level(self, root, level):
         if root is not None:
@@ -62,7 +64,7 @@ t.root = t.insert(t.root, 8)
 
 print("\nPre Order : ")
 t.print_tree(t.root, 0)
-print("\nIn Order : ")
+print("\nIn Order (Increasing Order): ")
 t.print_tree(t.root, 1)
 print("\nPost Order : ")
 t.print_tree(t.root, 2)
