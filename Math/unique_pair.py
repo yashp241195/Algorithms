@@ -26,3 +26,23 @@ for i in range(size):
                 ans[y] = x
 
 print("Unique pairs : ", ans)
+
+
+# Finding pairs in sorted array
+
+lo = 0
+hi = size - 1
+
+ans = dict()
+
+while lo < hi:
+    if arr[lo] + arr[hi] == pair_sum:
+        ans[arr[lo]] = arr[hi]
+        lo += 1
+        hi -= 1
+    elif arr[lo] + arr[hi] > pair_sum:
+        hi -= 1
+    else:
+        lo += 1
+
+print("Unique pairs (in sorted array) : ", ans)
