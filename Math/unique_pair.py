@@ -46,3 +46,27 @@ while lo < hi:
         lo += 1
 
 print("Unique pairs (in sorted array) : ", ans)
+
+# number expressed as prime sum
+
+
+def is_prime(n):
+    s = int(n**0.5)+1
+    for k in range(2, s):
+        if n % k == 0:
+            return False
+    return True
+
+
+num = 36
+ans = dict()
+
+for i in range(num):
+    if is_prime(i) and is_prime(num - i):
+        if i < num - i:
+            ans[i] = num - i
+        else:
+            ans[num - i] = i
+
+print(num, " can be expressed as prime sum", ans)
+
