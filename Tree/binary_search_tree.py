@@ -1,5 +1,3 @@
-# Simple BST
-
 class Node:
     def __init__(self,data):
         self.data = data
@@ -75,6 +73,17 @@ class Tree:
 
         return root
 
+    def delete(self, root, key):
+        if root is not None:
+            if root.data == key:
+                ctr = 0
+                if root.left is None:
+                    ctr += 1
+                if root.right is None:
+                    ctr += 1
+                if ctr == 2:
+                    del root
+
 
 t = Tree()
 t.root = Node(5)
@@ -98,6 +107,12 @@ print("\nMaximum Height : ", t.get_height(t.root, 0))
 print("\nAfter Left Rotation : ")
 t.root = t.rotate_left(t.root)
 t.print_level(t.root, 0)
+print("\nIn Order (Increasing Order): ")
+t.print_tree(t.root, 1)
 print("\nAfter Right Rotation : ")
 t.root = t.rotate_right(t.root)
 t.print_level(t.root, 0)
+print("\nIn Order (Increasing Order): ")
+t.print_tree(t.root, 1)
+print("\nNote : In-order traversal will remain same ")
+
