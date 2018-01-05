@@ -1,3 +1,5 @@
+# Binary Search Tree
+
 class Node:
     def __init__(self,data):
         self.data = data
@@ -73,16 +75,45 @@ class Tree:
 
         return root
 
+    def find_minimum(self, root):
+        current = root
+        while current.left is not None:
+            current = current.left
+        return current
+
     def delete(self, root, key):
-        if root is not None:
-            if root.data == key:
-                ctr = 0
-                if root.left is None:
-                    ctr += 1
-                if root.right is None:
-                    ctr += 1
-                if ctr == 2:
-                    del root
+        if root is None:
+            print(key, " does not exist in tree ")
+            return root
+        elif key < root.data:
+            root.left = self.delete(root.left, key)
+        elif key > root.data:
+            root.right = self.delete(root.right, key)
+        else:
+            # value is found
+            # print(key, " exist in tree")
+            # No child
+            if root.left is None and root.right is None:
+                del root
+                root = None
+            # Single child case
+            elif root.left is None:
+                temp = root
+                root = root.right
+                del temp
+
+            elif root.right is None:
+                temp = root
+                root = root.left
+                del temp
+            #  Two children case
+            else:
+                # Find in order successor (minimum)
+                next_min = self.find_minimum(root.right)
+                root.data = next_min.data
+                root.right = self.delete(root.right, next_min.data)
+
+        return root
 
 
 t = Tree()
@@ -116,3 +147,6 @@ print("\nIn Order (Increasing Order): ")
 t.print_tree(t.root, 1)
 print("\nNote : In-order traversal will remain same ")
 
+t.root = t.delete(t.root, 0)
+t.root = t.delete(t.root, 8)
+t.print_level(t.root, 0)
