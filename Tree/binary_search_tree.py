@@ -54,11 +54,11 @@ class Tree:
     def rotate_left(self, root):
         if root.right is not None:
             old_root = root  # y -> current root
-            new_root = root.left  # x -> root after rotate
+            new_root = root.right  # x -> root after rotate
 
-            old_root.left = new_root.right  # y.left (earlier -> x) = x.right (should be assigned as beta)
-            new_root.right = old_root  # x.right = y
-
+            old_root.right = new_root.left  # changing beta
+            new_root.left = old_root
+            
             root = new_root  # x is the new current root
 
         return root
@@ -66,11 +66,11 @@ class Tree:
     def rotate_right(self, root):
         if root.left is not None:
             old_root = root  # x -> current root
-            new_root = root.right  # y -> root after rotate
+            new_root = root.left  # y -> root after rotate
 
-            old_root.right = new_root.left  # x.right (earlier -> y) = y.left (should be assigned as beta)
-            new_root.left = old_root  # y.left = x
-
+            old_root.left = new_root.right  # changing beta
+            new_root.right = old_root
+            
             root = new_root  # x is the new current root
 
         return root
