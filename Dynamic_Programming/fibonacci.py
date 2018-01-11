@@ -90,3 +90,24 @@ print("\nValue of ", num+1, " th sequence or fibonacci(", num, ")  of fibonacci 
 print(cache)
 
 
+# Fibonacci Sequence
+
+def fib(n):
+
+    first = 0
+    second = 1
+    print(first, end=", ")
+    print(second, end=", ")
+
+    third = 0
+    for i in range(2, n+1):
+        third = first + second
+        first = second
+        second = third
+
+        print(third, end=", ")
+
+    return third
+
+
+fib(num)
