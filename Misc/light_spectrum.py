@@ -53,14 +53,22 @@ for j in range(380, 780):
     G *= max_Intensity
     B *= max_Intensity
 
-    print(R, G, B)
-    pt = Point(xt, yt)
+    rect = Rectangle(Point(xt, yt), Point(xt, yt + 100))
+    rect2 = Rectangle(Point(xt, yt + 110), Point(xt, yt + 200))
+    rect3 = Rectangle(Point(xt, yt + 210), Point(xt, yt + 310))
+    rect4 = Rectangle(Point(xt, yt + 320), Point(xt, yt + 420))
 
-    pt2 = Point(xt+1, yt+100)
-    rect = Rectangle(pt, pt2)
-    rect.setOutline(color_rgb(int(R),int(G),int(B)))
+    rect.setOutline(color_rgb(int(R), int(G / max_Intensity), int(B / max_Intensity)))
+    rect2.setOutline(color_rgb(int(R / max_Intensity), int(G), int(B / max_Intensity)))
+    rect3.setOutline(color_rgb(int(R / max_Intensity), int(G / max_Intensity), int(B)))
+    rect4.setOutline(color_rgb(int(R), int(G), int(B)))
+
     rect.draw(win)
-    xt += 1
+    rect2.draw(win)
+    rect3.draw(win)
+    rect4.draw(win)
+
+    xt += 2
 
 
 win.getMouse()
