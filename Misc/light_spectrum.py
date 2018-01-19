@@ -17,6 +17,7 @@ yt = 10
 max_Intensity = 255
 
 for j in range(380, 780):
+
     WL = j
     R = G = B = 1
     R1 = G1 = B1 = 1
@@ -57,10 +58,13 @@ for j in range(380, 780):
         B = B1 = 0
 
     elif in_range(WL, 645, 780):
+
         R = R1 = 1
         G = G1 = 0
         B = B1 = 0
+
     else:
+
         R = R1 = 0
         G = G1 = 0
         B = B1 = 0
@@ -84,6 +88,8 @@ for j in range(380, 780):
     rect3.setOutline(color_rgb(int(R / max_Intensity), int(G / max_Intensity), int(B)))
     rect4.setOutline(color_rgb(int(R), int(G), int(B)))
     rect5.setOutline(color_rgb(int(R1), int(G1), int(B1)))
+
+    # print(R1,G1,B1)
 
     rect.draw(win)
     rect2.draw(win)
