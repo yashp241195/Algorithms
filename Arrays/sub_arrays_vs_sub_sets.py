@@ -1,4 +1,3 @@
-
 # Find all sub arrays of size k within the array
 # Don't confuse sub arrays with subset
 # total possible subsets = 1+2+3+..n = n*(n+1)/2
@@ -13,6 +12,20 @@ for k in range(1, size):
             print(arr[j], end=" ")
         print("")
 
+
+diff = 1
+
+while diff < size:
+    i = 0
+    while i + diff < size:
+        print(i, ":", i+diff, end=", ")
+        i += 1
+    diff += 1
+    print("")
+
+
+        
+        
 # Find all subsets
 # hint: for each level/depth of tree make sure i value is same
 
