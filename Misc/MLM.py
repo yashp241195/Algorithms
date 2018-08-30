@@ -25,7 +25,7 @@ for i in range(levels):
 	ps = a*pow(r,i)
 	lm = pow(n,(levels-1)-i)
 
-	print("levels",levels-i," members = ",lm," profit share = ",ps," amount remaining = ", remaining)
+	print("levels",levels-i," members = ",lm," profit share per member = ",ps," amount remaining = ", remaining)
 	remaining -= (lm*ps) 
 	team_strength += lm
 
